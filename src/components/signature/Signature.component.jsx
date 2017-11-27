@@ -2,31 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Redirect from './Redirect.component';
-
-const AccountContent = account => (
-  <div>
-    <p>
-      Carefully check the address bellow.
-      If you want to certify a different address,
-      please change your current account in MetaMask.
-    </p>
-    <p>
-      <span className='tag is-info is-large'>{ account }</span>
-    </p>
-  </div>
-);
-
-const CertifyButton = (address, action) => (
-  <button className='button is-primary' onClick={() => action(address)}>
-    Certify my address with LuxTrust signature
-  </button>
-);
-
-const WaitMessage = (
-  <p>
-    You will be redirected to LuxTrust, please wait...
-  </p>
-);
+import Address from './AddressComponent.component';
 
 const SignatureComponent = ({
   processing,
@@ -39,10 +15,35 @@ const SignatureComponent = ({
       <p>
         <strong>Certify your Ethereum address</strong>
       </p>
-      { !processing && AccountContent(account) }
-      { !processing && CertifyButton(account, signAddress) }
-      { processing && WaitMessage }
-      { samlRequest !== null && <Redirect samlRequest={samlRequest} /> }
+      <section className='section'>
+        <div className='container'>
+          <h1 className='title has-text-grey-dark'>
+            Sign your address
+          </h1>
+          { !processing && (
+            <div>
+              <div>
+                <p>
+                  Carefully check the address below.
+                  If you want to certify a different address,
+                  please change your current account in MetaMask.
+                </p>
+                <p style={{ marginTop: '5px', marginBottom: '5px' }}>
+                  <Address account={account} />
+                </p>
+              </div>
+              <button
+                className='button is-primary'
+                onClick={() => signAddress(account)}
+              >
+                Sign with my LuxTrust device
+              </button>
+            </div>
+          )}
+          { processing && <p>You will be redirected to LuxTrust, please wait...</p> }
+          { samlRequest !== null && <Redirect samlRequest={samlRequest} /> }
+        </div>
+      </section>
     </div>
   </div>
 );

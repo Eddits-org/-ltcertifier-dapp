@@ -3,6 +3,7 @@ import Web3 from 'services/Web3.service';
 export const TRANSACTION_SENT = 'TRANSACTION_SENT';
 export const TRANSACTION_HASH_RECEIVED = 'TRANSACTION_HASH_RECEIVED';
 export const TRANSACTION_MINED = 'TRANSACTION_MINED';
+export const TRANSACTION_CANCEL = 'TRANSACTION_CANCEL';
 
 const transactionSent = () => ({
   type: TRANSACTION_SENT
@@ -34,3 +35,7 @@ export const certify = (network, account, params) => (dispatch) => {
     });
   });
 };
+
+export const cancel = () => ({
+  type: TRANSACTION_CANCEL
+});

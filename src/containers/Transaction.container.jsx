@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import TransactionComponent from 'components/transaction/Transaction.component';
-import { certify } from 'actions/Transaction.action';
+import { certify, cancel } from 'actions/Transaction.action';
 
 const mapStateToProps = store => ({
   params: store.tx.params,
@@ -14,7 +14,8 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  certify: (network, account, params) => dispatch(certify(network, account, params))
+  certify: (network, account, params) => dispatch(certify(network, account, params)),
+  cancel: () => dispatch(cancel())
 });
 
 export default connect(

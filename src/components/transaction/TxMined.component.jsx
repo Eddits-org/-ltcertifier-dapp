@@ -1,21 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TxMined = ({ txBlock }) => (
-  <div>
-    <p>
-      <h4 className='title is-4'>
-        <span className='icon has-text-success' style={{ marginRight: '12px' }}>
-          <i className='fa fa-check' />
-        </span>
-        The transaction has been mined in block <strong>{txBlock}</strong>.
-      </h4>
-    </p>
-  </div>
+import EthTx from './EthTx.component';
+
+const TxMined = ({ txBlock, txHash, network }) => (
+  <section className='section'>
+    <div className='container'>
+      <h1 className='title has-text-grey-dark'>
+        The transaction has been mined in block {txBlock}.
+      </h1>
+      <p>
+        Transaction hash :
+        <EthTx {...{ txHash, network }} color='is-success' />
+      </p>
+    </div>
+  </section>
 );
 
 TxMined.propTypes = {
-  txBlock: PropTypes.number.isRequired
+  txBlock: PropTypes.number.isRequired,
+  txHash: PropTypes.string.isRequired,
+  network: PropTypes.object.isRequired
 };
 
 export default TxMined;

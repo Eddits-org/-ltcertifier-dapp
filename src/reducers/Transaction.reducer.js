@@ -1,4 +1,4 @@
-import { TRANSACTION_SENT, TRANSACTION_HASH_RECEIVED, TRANSACTION_MINED } from 'actions/Transaction.action';
+import { TRANSACTION_SENT, TRANSACTION_HASH_RECEIVED, TRANSACTION_MINED, TRANSACTION_CANCEL } from 'actions/Transaction.action';
 
 export const initialState = {
   params: null,
@@ -25,6 +25,11 @@ export const TransactionReducer = (state = initialState, action) => {
         ...state,
         mined: true,
         block: action.block
+      };
+    case TRANSACTION_CANCEL:
+      return {
+        ...state,
+        params: null
       };
 
     default:

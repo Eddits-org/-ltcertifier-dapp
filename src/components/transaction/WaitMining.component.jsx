@@ -1,18 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const WaitMining = ({ txHash }) => (
-  <div>
-    <p>
-      The transaction has been sent.
-    </p>
-    {txHash && (
-      <p>Transaction hash: <span className='tag is-primary is-medium'>{txHash}</span></p>
-    )}
-    <p>
-      The transaction will be mined, please wait...
-    </p>
-  </div>
+import EthTx from './EthTx.component';
+
+const WaitMining = ({ txHash, network }) => (
+  <section className='section'>
+    <div className='container'>
+      <h1 className='title has-text-grey-dark'>
+        The transaction has been sent.
+      </h1>
+      {txHash && (
+        <p>
+          Transaction hash:
+          <EthTx {...{ txHash, network }} />
+        </p>
+      )}
+      <p>
+        <i className='fa fa-refresh fa-spin' style={{ marginRight: '5px' }} />
+        The transaction will be mined, please wait...
+      </p>
+    </div>
+  </section>
 );
 
 WaitMining.defaultProps = {
@@ -20,7 +28,8 @@ WaitMining.defaultProps = {
 };
 
 WaitMining.propTypes = {
-  txHash: PropTypes.string
+  txHash: PropTypes.string,
+  network: PropTypes.object.isRequired
 };
 
 export default WaitMining;

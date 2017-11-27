@@ -10,6 +10,7 @@ const TransactionComponent = ({
   account,
   network,
   certify,
+  cancel,
   txSent,
   txHash,
   txMined,
@@ -21,18 +22,40 @@ const TransactionComponent = ({
         <strong>Send the transaction</strong>
       </p>
       { !txSent && (
-      <div>
-        <p>
-          The following informations will be send in an Ethereum transaction.
-          Please verify carefully and confirm the transaction.
-        </p>
-        <TxDetail params={params} account={account} />
-        <button className='button is-primary' onClick={() => certify(network, account, params)}>
-          Send transaction
-        </button>
-      </div>)}
-      { txSent && !txMined && <WaitMining txHash={txHash} />}
-      { txMined && <TxMined txHash={txHash} txBlock={txBlock} />}
+        <section className='section'>
+          <div className='container'>
+            <h1 className='title has-text-grey-dark'>
+              Please review transaction details
+            </h1>
+            <p style={{ marginBottom: '5px' }}>
+              The following informations will be send in an Ethereum transaction.
+              Please verify carefully and confirm the transaction.
+            </p>
+            <TxDetail params={params} account={account} />
+            <nav className='level'>
+              <div className='level-left'>
+                <div className='level-item'>
+                  <button
+                    className='button is-primary'
+                    onClick={() => certify(network, account, params)}
+                  >
+                    Send transaction
+                  </button>
+                </div>
+                <div className='level-item'>
+                  <button
+                    className='button is-light'
+                    onClick={cancel}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </section>)}
+      { txSent && !txMined && <WaitMining {...{ txHash, network }} />}
+      { txMined && <TxMined {...{ txHash, txBlock, network }} />}
     </div>
   </div>
 );
@@ -50,7 +73,8 @@ TransactionComponent.propTypes = {
   txHash: PropTypes.string,
   txMined: PropTypes.bool.isRequired,
   txBlock: PropTypes.number,
-  certify: PropTypes.func.isRequired
+  certify: PropTypes.func.isRequired,
+  cancel: PropTypes.func.isRequired
 };
 
 export default TransactionComponent;
