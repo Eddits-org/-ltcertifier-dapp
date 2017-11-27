@@ -1,0 +1,12 @@
+$fa-font-path: "~font-awesome/fonts";
+@import '~bulma/sass/utilities/initial-variables.sass';
+@import '~bulma/sass/utilities/functions';
+@import '~font-awesome/scss/font-awesome.scss';
+
+$title-color: $white-bis;
+$subtitle-color: $white-bis;
+$text: $white-bis;
+$text-strong: $white-bis;
+$box-color: $grey-dark;
+
+@import '~bulma/bulma.sass';
