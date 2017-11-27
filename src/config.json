@@ -2,7 +2,7 @@
   "orelySvcURL": "https://eth-kyc-orely-svc.intech-lab.com",
   "networks": [
     { "id": "1", "name": "Mainnet", "enabled": false, "etherscan": "https://etherscan.io/tx" },
-    { "id": "3", "name": "Ropsten", "enabled": true, "contract": "0x475c6500326d32e199cbc812d52aa1344c350653", "etherscan": "https://ropsten.etherscan.io/tx"},
+    { "id": "3", "name": "Ropsten", "enabled": true, "contract": "0xaea1b9567b31f3243586a0cdf03a7703bfcdc089", "etherscan": "https://ropsten.etherscan.io/tx"},
     { "id": "42", "name": "Kovan", "enabled": false, "etherscan": "https://kovan.etherscan.io/tx" },
     { "id": "153", "name": "Local", "enabled": false, "contract": "0x7209b8bdd1ba784f4992240f13cad85a66a48075" }
   ],
