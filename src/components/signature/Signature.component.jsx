@@ -10,7 +10,7 @@ const SignatureComponent = ({
   signAddress,
   samlRequest
 }) => (
-  <div className='box' style={{ marginTop: '10px' }}>
+  <div className='box' style={{ marginTop: '1.5rem' }}>
     <div className='container'>
       <p>
         <strong>Certify your Ethereum address</strong>
@@ -28,9 +28,9 @@ const SignatureComponent = ({
                   If you want to certify a different address,
                   please change your current account in MetaMask.
                 </p>
-                <p style={{ marginTop: '5px', marginBottom: '5px' }}>
+                <div style={{ marginTop: '5px', marginBottom: '5px' }}>
                   <Address account={account} />
-                </p>
+                </div>
               </div>
               <button
                 className='button is-primary'

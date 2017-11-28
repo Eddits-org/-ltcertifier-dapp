@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Hero from 'components/Hero.component';
+import Title from 'components/Title.component';
+import Footer from 'components/Footer.component';
 import Network from 'containers/Network.container';
 import Signature from 'containers/Signature.container';
 import Transaction from 'containers/Transaction.container';
 
 const AppComponent = ({ ready, certificationStep }) => (
   <div className='container'>
-    <Hero />
+    <Title />
     <Network />
     {certificationStep === 1 && ready && <Signature />}
     {certificationStep === 2 && ready && <Transaction />}
+    <Footer />
   </div>
 );
 

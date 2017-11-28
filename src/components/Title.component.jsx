@@ -1,7 +1,7 @@
 import React from 'react';
 
-const HeroComponent = () => (
-  <section className='hero' style={{ textAlign: 'center' }}>
+const TitleComponent = () => (
+  <section className='hero has-text-centered'>
     <div className='hero-body'>
       <div className='container'>
         <h1 className='title'>
@@ -15,4 +15,4 @@ const HeroComponent = () => (
   </section>
 );
 
-export default HeroComponent;
+export default TitleComponent;

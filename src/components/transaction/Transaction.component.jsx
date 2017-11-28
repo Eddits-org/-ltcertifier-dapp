@@ -16,7 +16,7 @@ const TransactionComponent = ({
   txMined,
   txBlock
 }) => (
-  <div className='box' style={{ marginTop: '10px' }}>
+  <div className='box' style={{ marginTop: '1.5rem' }}>
     <div className='container'>
       <p>
         <strong>Send the transaction</strong>
