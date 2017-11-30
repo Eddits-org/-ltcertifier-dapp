@@ -8,7 +8,7 @@ import WaitingNetwork from './WaitingNetwork.component';
 import NoAccount from './NoAccount.component';
 
 const NetworkComponent = ({ web3Available, connectedNetwork, selectedAccount }) => (
-  <div>
+  <div className='network'>
     { !web3Available && <Install /> }
     { web3Available && !connectedNetwork && <WaitingNetwork /> }
     { !!connectedNetwork && !connectedNetwork.enabled &&

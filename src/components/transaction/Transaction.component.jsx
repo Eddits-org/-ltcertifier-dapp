@@ -16,47 +16,45 @@ const TransactionComponent = ({
   txMined,
   txBlock
 }) => (
-  <div className='box' style={{ marginTop: '1.5rem' }}>
-    <div className='container'>
-      <p>
-        <strong>Send the transaction</strong>
-      </p>
-      { !txSent && (
-        <section className='section'>
-          <div className='container'>
-            <h1 className='title has-text-grey-dark'>
-              Please review transaction details
-            </h1>
-            <p style={{ marginBottom: '5px' }}>
-              The following informations will be send in an Ethereum transaction.
-              Please verify carefully and confirm the transaction.
-            </p>
-            <TxDetail params={params} account={account} />
-            <nav className='level'>
-              <div className='level-left'>
-                <div className='level-item'>
-                  <button
-                    className='button is-primary'
-                    onClick={() => certify(network, account, params)}
-                  >
-                    Send transaction
-                  </button>
-                </div>
-                <div className='level-item'>
-                  <button
-                    className='button is-light'
-                    onClick={cancel}
-                  >
-                    Cancel
-                  </button>
-                </div>
+  <div className='container'>
+    <p>
+      <strong>Send the transaction</strong>
+    </p>
+    { !txSent && (
+      <section className='section'>
+        <div className='container'>
+          <h1 className='title has-text-grey-dark'>
+            Please review transaction details
+          </h1>
+          <p style={{ marginBottom: '5px' }}>
+            The following informations will be send in an Ethereum transaction.
+            Please verify carefully and confirm the transaction.
+          </p>
+          <TxDetail params={params} account={account} />
+          <nav className='level'>
+            <div className='level-left'>
+              <div className='level-item'>
+                <button
+                  className='button is-primary'
+                  onClick={() => certify(network, account, params)}
+                >
+                  Send transaction
+                </button>
               </div>
-            </nav>
-          </div>
-        </section>)}
-      { txSent && !txMined && <WaitMining {...{ txHash, network }} />}
-      { txMined && <TxMined {...{ txHash, txBlock, network }} />}
-    </div>
+              <div className='level-item'>
+                <button
+                  className='button is-light'
+                  onClick={cancel}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </section>)}
+    { txSent && !txMined && <WaitMining {...{ txHash, network }} />}
+    { txMined && <TxMined {...{ txHash, txBlock, network }} />}
   </div>
 );
 

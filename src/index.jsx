@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import App from 'containers/App.container';
+import App from 'components/App.component';
 
 import { fetchWeb3, fetchMetamaskInfos } from 'actions/Network.action';
 import certifierApp from './reducers';

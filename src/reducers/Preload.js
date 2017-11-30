@@ -6,8 +6,8 @@ const preload = () => {
     const orelyResponse = url.substring(url.indexOf(TAG) + TAG.length);
     const json = JSON.parse(atob(orelyResponse));
     return {
-      app: {
-        certificationStep: 2
+      certifier: {
+        step: 2
       },
       tx: {
         params: json,

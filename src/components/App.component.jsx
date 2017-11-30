@@ -1,25 +1,36 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import Title from 'components/Title.component';
+import { withRouter } from 'react-router';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
+
+import NavBar from 'components/NavBar.component';
 import Footer from 'components/Footer.component';
+import Welcome from 'components/Welcome.component';
 import Network from 'containers/Network.container';
-import Signature from 'containers/Signature.container';
-import Transaction from 'containers/Transaction.container';
+import Certifier from 'containers/Certifier.container';
+import Verifier from 'containers/Verifier.container';
 
-const AppComponent = ({ ready, certificationStep }) => (
-  <div className='container'>
-    <Title />
-    <Network />
-    {certificationStep === 1 && ready && <Signature />}
-    {certificationStep === 2 && ready && <Transaction />}
-    <Footer />
-  </div>
+const NavBarWithRouter = withRouter(NavBar);
+
+const AppComponent = () => (
+  <Router>
+    <div className='container'>
+      <NavBarWithRouter />
+      <Network />
+      <div>
+        <Route exact path='/' component={Welcome} />
+        <Route path='/certify' component={Certifier} />
+        <Route path='/verify' component={Verifier} />
+      </div>
+      <Footer />
+    </div>
+  </Router>
 );
 
 AppComponent.propTypes = {
-  ready: PropTypes.bool.isRequired,
-  certificationStep: PropTypes.number.isRequired
 };
 
 export default AppComponent;
