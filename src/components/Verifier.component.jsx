@@ -10,43 +10,51 @@ const VerifierComponent = ({
   valid,
   fetching,
   certification,
-  changeAddress
-}) => (
-  <section className='section'>
-    {!!network && (
-      <div>
-        <h1 className='title has-text-grey-dark'>
-          Verify an address
-        </h1>
+  changeAddress,
+  match
+}) => {
+  if (match.params.address && account === null && !!network) {
+    changeAddress(network, match.params.address);
+  }
+  return (
+    <section className='section'>
+      {!!network && (
         <div>
-          <Address
-            value={account}
-            onChange={value => changeAddress(network, value)}
-            valid={valid}
-          />
+          <h1 className='title has-text-grey-dark'>
+            Verify an address
+          </h1>
+          <div>
+            <Address
+              value={account || ''}
+              onChange={value => changeAddress(network, value)}
+              valid={valid}
+            />
+          </div>
         </div>
-      </div>
-    )}
-    {fetching && (
-      <p>
-        <i className='fa fa-refresh fa-spin' style={{ marginRight: '5px' }} />
-        Retrieving the certification for address {account}...
-      </p>
-    )}
-    {!fetching && !!certification && <Certification {...{ certification }} />}
-  </section>
-);
+      )}
+      {fetching && (
+        <p>
+          <i className='fa fa-refresh fa-spin' style={{ marginRight: '5px' }} />
+          Retrieving the certification for address {account}...
+        </p>
+      )}
+      {!fetching && !!certification && <Certification {...{ certification }} />}
+    </section>
+  );
+};
 
 VerifierComponent.defaultProps = {
   certification: null,
-  network: null
+  network: null,
+  account: null
 };
 
 VerifierComponent.propTypes = {
   network: PropTypes.object,
-  account: PropTypes.string.isRequired,
+  account: PropTypes.string,
   valid: PropTypes.bool.isRequired,
   fetching: PropTypes.bool.isRequired,
+  match: PropTypes.object.isRequired,
   certification: PropTypes.object,
   changeAddress: PropTypes.func.isRequired
 };

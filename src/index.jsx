@@ -10,6 +10,7 @@ import { createLogger } from 'redux-logger';
 import App from 'components/App.component';
 
 import { fetchWeb3, fetchMetamaskInfos } from 'actions/Network.action';
+import { checkAddressCertification } from 'actions/Signature.action';
 import certifierApp from './reducers';
 import preload from './reducers/Preload';
 
@@ -48,5 +49,19 @@ const unsubscribe = store.subscribe(() => {
       fetchMetamaskInfos(store.dispatch);
     }, 1000);
     unsubscribe();
+  }
+});
+
+let prevAddress = null;
+store.subscribe(() => {
+  if (store.getState().network.web3Available && !!store.getState().network.selectedAccount) {
+    const selectedAddress = store.getState().network.selectedAccount;
+    if (selectedAddress !== prevAddress) {
+      prevAddress = selectedAddress;
+      store.dispatch(checkAddressCertification(
+        store.getState().network.connectedNetwork,
+        selectedAddress
+      ));
+    }
   }
 });

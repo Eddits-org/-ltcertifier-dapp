@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const className = (location, path) => (
-  `navbar-item ${location.pathname === path ? 'is-active' : ''}`
+  `navbar-item ${location.pathname.indexOf(path) >= 0 ? 'is-active' : ''}`
 );
 
 const NavBarComponent = ({ location }) => (

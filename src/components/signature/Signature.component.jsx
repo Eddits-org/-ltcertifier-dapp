@@ -8,7 +8,8 @@ const SignatureComponent = ({
   processing,
   account,
   signAddress,
-  samlRequest
+  samlRequest,
+  alreadyCertified
 }) => (
   <section className='section'>
     <div>
@@ -24,7 +25,7 @@ const SignatureComponent = ({
               please change your current account in MetaMask.
             </p>
             <div style={{ marginTop: '5px', marginBottom: '5px' }}>
-              <Address account={account} />
+              <Address {...{ certified: alreadyCertified, account }} />
             </div>
           </div>
           <button
@@ -49,6 +50,7 @@ SignatureComponent.propTypes = {
   account: PropTypes.string.isRequired,
   samlRequest: PropTypes.string,
   processing: PropTypes.bool.isRequired,
+  alreadyCertified: PropTypes.bool.isRequired,
   signAddress: PropTypes.func.isRequired
 };
 

@@ -23,7 +23,7 @@ const AppComponent = () => (
       <div>
         <Route exact path='/' component={Welcome} />
         <Route path='/certify' component={Certifier} />
-        <Route path='/verify' component={Verifier} />
+        <Route path='/verify/:address?' component={Verifier} />
       </div>
       <Footer />
     </div>

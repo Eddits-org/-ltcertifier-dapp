@@ -1,7 +1,7 @@
 import { VERIFY_ACCOUNT_CHANGED, FETCH_ACCOUNT_CERTIFICATION, ACCOUNT_CERTIFICATION_FETCHED, CLEAR_ACCOUNT_CERTIFICATION } from 'actions/Verifier.action';
 
 export const initialState = {
-  account: '',
+  account: null,
   accountValid: false,
   isFetching: false,
   certification: null

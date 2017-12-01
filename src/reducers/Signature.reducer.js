@@ -1,8 +1,9 @@
-import { SAML_REQUEST_REQUESTED, SAML_REQUEST_RECEIVED } from 'actions/Signature.action';
+import { SAML_REQUEST_REQUESTED, SAML_REQUEST_RECEIVED, ADDRESS_VERIFICATION_FETCHED } from 'actions/Signature.action';
 
 export const initialState = {
   samlRequest: null,
-  samlRequestProcessing: false
+  samlRequestProcessing: false,
+  alreadyCertified: false
 };
 
 export const SignatureReducer = (state = initialState, action) => {
@@ -16,6 +17,11 @@ export const SignatureReducer = (state = initialState, action) => {
       return {
         ...state,
         samlRequest: action.request
+      };
+    case ADDRESS_VERIFICATION_FETCHED:
+      return {
+        ...state,
+        alreadyCertified: action.certified
       };
 
     default:

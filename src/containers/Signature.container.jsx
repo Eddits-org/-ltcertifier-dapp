@@ -6,7 +6,8 @@ import { buildSamlRequest } from 'actions/Signature.action';
 const mapStateToProps = store => ({
   account: store.network.selectedAccount,
   processing: store.sign.samlRequestProcessing,
-  samlRequest: store.sign.samlRequest
+  samlRequest: store.sign.samlRequest,
+  alreadyCertified: store.sign.alreadyCertified
 });
 
 const mapDispatchToProps = dispatch => ({
