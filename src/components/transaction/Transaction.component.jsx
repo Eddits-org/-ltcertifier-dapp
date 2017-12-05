@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Amount from 'components/Amount.component';
 import TxDetail from './TxDetail.component';
 import WaitMining from './WaitMining.component';
 import TxMined from './TxMined.component';
@@ -14,29 +15,34 @@ const TransactionComponent = ({
   txSent,
   txHash,
   txMined,
-  txBlock
+  txBlock,
+  fetchingCost,
+  cost
 }) => (
   <div className='container'>
-    <p>
-      <strong>Send the transaction</strong>
-    </p>
     { !txSent && (
       <section className='section'>
-        <div className='container'>
+        <div>
           <h1 className='title has-text-grey-dark'>
             Please review transaction details
           </h1>
-          <p style={{ marginBottom: '5px' }}>
+          <p>
             The following informations will be send in an Ethereum transaction.
             Please verify carefully and confirm the transaction.
           </p>
           <TxDetail params={params} account={account} />
-          <nav className='level'>
+          {!fetchingCost && !!cost && (
+            <div>
+              Current certification cost (without transaction fees): <Amount value={cost} />
+            </div>
+          )}
+          <nav className='level' style={{ marginTop: '5px' }}>
             <div className='level-left'>
               <div className='level-item'>
                 <button
                   className='button is-primary'
-                  onClick={() => certify(network, account, params)}
+                  disabled={fetchingCost || !cost}
+                  onClick={() => certify(network, account, params, cost)}
                 >
                   Send transaction
                 </button>
@@ -60,7 +66,8 @@ const TransactionComponent = ({
 
 TransactionComponent.defaultProps = {
   txHash: null,
-  txBlock: null
+  txBlock: null,
+  cost: null
 };
 
 TransactionComponent.propTypes = {
@@ -71,6 +78,8 @@ TransactionComponent.propTypes = {
   txHash: PropTypes.string,
   txMined: PropTypes.bool.isRequired,
   txBlock: PropTypes.number,
+  cost: PropTypes.object,
+  fetchingCost: PropTypes.bool.isRequired,
   certify: PropTypes.func.isRequired,
   cancel: PropTypes.func.isRequired
 };

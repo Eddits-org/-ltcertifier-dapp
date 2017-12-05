@@ -10,11 +10,13 @@ const mapStateToProps = store => ({
   txSent: store.tx.sent,
   txHash: store.tx.hash,
   txMined: store.tx.mined,
-  txBlock: store.tx.block
+  txBlock: store.tx.block,
+  fetchingCost: store.certifier.fetchingCost,
+  cost: store.certifier.cost
 });
 
 const mapDispatchToProps = dispatch => ({
-  certify: (network, account, params) => dispatch(certify(network, account, params)),
+  certify: (network, account, params, cost) => dispatch(certify(network, account, params, cost)),
   cancel: () => dispatch(cancel())
 });
 

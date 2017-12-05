@@ -19,7 +19,7 @@ const transactionMined = block => ({
   block
 });
 
-export const certify = (network, account, params) => (dispatch) => {
+export const certify = (network, account, params, cost) => (dispatch) => {
   dispatch(transactionSent());
   Web3.certify(
     network.contract,
@@ -27,7 +27,8 @@ export const certify = (network, account, params) => (dispatch) => {
     params.signed_info,
     params.signed_info_signature,
     params.manifest,
-    params.signer_certificate
+    params.signer_certificate,
+    cost
   ).then((txHash) => {
     dispatch(transactionHashReceived(txHash));
     Web3.waitForMining(txHash).then((block) => {

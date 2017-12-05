@@ -11,6 +11,7 @@ import App from 'components/App.component';
 
 import { fetchWeb3, fetchMetamaskInfos } from 'actions/Network.action';
 import { checkAddressCertification } from 'actions/Signature.action';
+import { fetchCertificationCost } from 'actions/Certifier.action';
 import certifierApp from './reducers';
 import preload from './reducers/Preload';
 
@@ -53,6 +54,7 @@ const unsubscribe = store.subscribe(() => {
 });
 
 let prevAddress = null;
+let prevContract = null;
 store.subscribe(() => {
   if (store.getState().network.web3Available && !!store.getState().network.selectedAccount) {
     const selectedAddress = store.getState().network.selectedAccount;
@@ -62,6 +64,15 @@ store.subscribe(() => {
         store.getState().network.connectedNetwork,
         selectedAddress
       ));
+    }
+  }
+  if (store.getState().network.web3Available &&
+      !!store.getState().network.connectedNetwork &&
+      store.getState().network.connectedNetwork.enabled) {
+    const contractAddress = store.getState().network.connectedNetwork.contract;
+    if (contractAddress !== prevContract) {
+      prevContract = contractAddress;
+      store.dispatch(fetchCertificationCost(store.getState().network.connectedNetwork));
     }
   }
 });

@@ -39,14 +39,14 @@ class Web3Service {
     });
   }
 
-  certify(contractAddress, account, signInfos, signature, manifest, certificate) {
+  certify(contractAddress, account, signInfos, signature, manifest, certificate, cost) {
     return this.withWeb3Promise((resolve, reject) => {
       this.contract.at(contractAddress).certify(
         signInfos,
         signature,
         manifest,
         certificate,
-        { from: account }, ((err, tx) => {
+        { from: account, value: cost }, ((err, tx) => {
           if (err) return reject(err);
           return resolve(tx);
         })
@@ -96,6 +96,15 @@ class Web3Service {
     });
   }
 
+  getCertificationCost(contractAddress) {
+    return this.withWeb3Promise((resolve, reject) => {
+      this.contract.at(contractAddress).cost((err, value) => {
+        if (err) return reject(err);
+        return resolve(value);
+      });
+    });
+  }
+
   isAddressCertified(contractAddress, address) {
     return this.withWeb3Promise((resolve, reject) => {
       this.contract.at(contractAddress).certified(address, (err, value) => {
@@ -139,6 +148,10 @@ class Web3Service {
         return resolve(value);
       });
     });
+  }
+
+  toValue(weiValue, unit) {
+    return this.web3.fromWei(weiValue, unit);
   }
 }
 

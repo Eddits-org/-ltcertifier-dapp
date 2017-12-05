@@ -5,7 +5,7 @@ import EthTx from './EthTx.component';
 
 const WaitMining = ({ txHash, network }) => (
   <section className='section'>
-    <div className='container'>
+    <div>
       <h1 className='title has-text-grey-dark'>
         The transaction has been sent.
       </h1>
