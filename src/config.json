@@ -1,5 +1,6 @@
 {
-  "orelySvcURL": "https://eth-kyc-orely-svc.intech-lab.com",
+  "baseUrl": "/ltcertifier",
+  "orelySvcURL": "https://edits.intech.lu/orely",
   "networks": [
     { "id": "1", "name": "Mainnet", "enabled": false},
     { "id": "3", "name": "Ropsten", "enabled": true, "contract": "0x18cc4e4d376c6f0aec01e064555d1ded47e1a199", "etherscan": "https://ropsten.etherscan.io"},

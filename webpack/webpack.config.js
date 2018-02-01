@@ -25,6 +25,7 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: path.join(src, 'index.html'),
     inject: 'body',
+    baseUrl: isProd ? '/ltcertifier/' : '/',
     isProd
   }),
   new CopyWebpackPlugin([

@@ -13,10 +13,12 @@ import Network from 'containers/Network.container';
 import Certifier from 'containers/Certifier.container';
 import Verifier from 'containers/Verifier.container';
 
+const config = require('config');
+
 const NavBarWithRouter = withRouter(NavBar);
 
 const AppComponent = () => (
-  <Router>
+  <Router basename={config.baseUrl}>
     <div className='container'>
       <NavBarWithRouter />
       <Network />
