@@ -1,4 +1,5 @@
 @import 'node_modules/bulma/sass/utilities/initial-variables.sass';
+
 html {
   width: 100%;
   height: 100%;
@@ -6,23 +7,9 @@ html {
 
 body {
   margin: 0;
-  background-color: #17182f;
+  background-color: #00284A;
   width: 100%;
   height: 100%;
-}
-
-canvas {
-  display: block;
-  vertical-align: bottom;
-}
-
-#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 1;
 }
 
 .notification {
@@ -41,10 +28,6 @@ h4.title {
   border-radius: 50px;
 }
 
-.footer {
-  padding: 2rem 1.5rem 2rem;
-}
-
 .container {
   background-color: white;
 }
@@ -53,3 +36,23 @@ h4.title {
   margin-left: 0px !important;
 }
 
+.main {
+  margin-top: 3.25rem;
+  background-color: white;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  background-color: #004681;
+  width: 100%;
+}
+
+.is-active {
+  text-decoration: underline;
+}
+
+.is-active:hover {
+  color: #3273dc !important;
+}

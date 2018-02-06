@@ -3,5 +3,10 @@ $fa-font-path: "~font-awesome/fonts";
 @import '~bulma/sass/utilities/functions';
 @import '~font-awesome/scss/font-awesome.scss';
 
+$cyan:         #004681 !default;
+$navbar-item-active-color: white;;
+$navbar-item-color: white;
+
+
 @import '~bulma/bulma.sass';
 @import '~bulma-tooltip/tooltip.sass';

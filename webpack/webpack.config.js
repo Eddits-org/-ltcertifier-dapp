@@ -28,9 +28,7 @@ const plugins = [
     baseUrl: isProd ? '/ltcertifier/' : '/',
     isProd
   }),
-  new CopyWebpackPlugin([
-    { from: path.join(src, 'assets/particles.json'), to: 'assets/particles.json' }
-  ])
+  new CopyWebpackPlugin([])
 ];
 
 const rules = [

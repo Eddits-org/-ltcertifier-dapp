@@ -5,8 +5,8 @@ const InstallComponent = () => (
     <p>
       MetaMask was not found in your browser.
       This extension is required to connect to the Ethereum network.
+      Please go to MetaMask and install the extension for your browser.
     </p>
-    <p style={{ marginBottom: '10px' }}>Please go to MetaMask and install the extension for your browser :</p>
     <a href='https://metamask.io'>
       <img style={{ maxWidth: '200px' }} alt='Download MetaMask' src='https://cdn-images-1.medium.com/max/1600/1*FMNaYm1KqZSZZkqwXASsUg.png' />
     </a>

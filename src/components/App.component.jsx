@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import NavBar from 'components/NavBar.component';
-import Footer from 'components/Footer.component';
+import Title from 'components/Title.component';
 import Welcome from 'components/Welcome.component';
 import Network from 'containers/Network.container';
 import Certifier from 'containers/Certifier.container';
@@ -19,15 +19,21 @@ const NavBarWithRouter = withRouter(NavBar);
 
 const AppComponent = () => (
   <Router basename={config.baseUrl}>
-    <div className='container'>
-      <NavBarWithRouter />
+    <div className='app-content'>
+      <Title />
       <Network />
-      <div>
-        <Route exact path='/' component={Welcome} />
-        <Route path='/certify' component={Certifier} />
-        <Route path='/verify/:address?' component={Verifier} />
+      <div className='main'>
+        <div className='container'>
+          <div>
+            <Route exact path='/' component={Welcome} />
+            <Route path='/certify' component={Certifier} />
+            <Route path='/verify/:address?' component={Verifier} />
+          </div>
+        </div>
       </div>
-      <Footer />
+      <footer>
+        <NavBarWithRouter />
+      </footer>
     </div>
   </Router>
 );

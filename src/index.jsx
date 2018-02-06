@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import 'particles.js';
-
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -34,9 +32,6 @@ ReactDOM.render(
   </Provider>,
   document.querySelector('#app')
 );
-
-// TODO : disable particles on mobile
-particlesJS.load('particles', 'assets/particles.json');
 
 // On load, check web3 availability
 window.addEventListener('load', () => {
