@@ -11,6 +11,9 @@ const NavBarComponent = ({ location }) => (
     <nav>
       <div className='navbar-menu'>
         <div className='navbar-start'>
+          <a className='navbar-item' href='https://edits.intech.lu'>
+            EDITS
+          </a>
           <Link className={className(location, '/certify')} to='/certify' href='/certify'>
             Certify
           </Link>

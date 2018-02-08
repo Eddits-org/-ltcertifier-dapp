@@ -16,22 +16,20 @@ const VerifierComponent = ({
   if (match.params.address && account === null && !!network) {
     changeAddress(network, match.params.address);
   }
-  return (
+  return network ? (
     <section className='section'>
-      {!!network && (
+      <div>
+        <h1 className='title has-text-grey-dark'>
+          Verify an address
+        </h1>
         <div>
-          <h1 className='title has-text-grey-dark'>
-            Verify an address
-          </h1>
-          <div>
-            <Address
-              value={account || ''}
-              onChange={value => changeAddress(network, value)}
-              valid={valid}
-            />
-          </div>
+          <Address
+            value={account || ''}
+            onChange={value => changeAddress(network, value)}
+            valid={valid}
+          />
         </div>
-      )}
+      </div>
       {fetching && (
         <p>
           <i className='fa fa-refresh fa-spin' style={{ marginRight: '5px' }} />
@@ -40,7 +38,7 @@ const VerifierComponent = ({
       )}
       {!fetching && !!certification && <Certification {...{ certification }} />}
     </section>
-  );
+  ) : null;
 };
 
 VerifierComponent.defaultProps = {
