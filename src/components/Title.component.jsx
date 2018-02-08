@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TitleComponent = () => (
-  <div>
+  <div className='titlebar'>
     <nav className='navbar is-info'>
       <div className='navbar-brand'>
         <span className='navbar-item'>
