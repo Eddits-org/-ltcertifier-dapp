@@ -1,9 +1,10 @@
 import { TRANSACTION_CANCEL } from 'actions/Transaction.action';
-import { FETCH_CERTIFICATION_COST, CERTIFICATION_COST_FETCHED } from 'actions/Certifier.action';
+import { FETCH_CERTIFICATION_COST, CERTIFICATION_COST_FETCHED, DISCLAIMER_ACCEPTED } from 'actions/Certifier.action';
 
 export const initialState = {
-  // 1 => Sign address with LT certificate,
-  // 2 => Send tx to Ethereum Smart Contract
+  // 1 => Accept the disclaimer
+  // 2 => Sign address with LT certificate,
+  // 3 => Send tx to Ethereum Smart Contract
   step: 1,
   fetchingCost: false,
   cost: null
@@ -15,6 +16,11 @@ export const CertifierReducer = (state = initialState, action) => {
       return {
         ...state,
         step: 1
+      };
+    case DISCLAIMER_ACCEPTED:
+      return {
+        ...state,
+        step: 2
       };
     case FETCH_CERTIFICATION_COST:
       return {

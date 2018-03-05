@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import CertifierComponent from 'components/Certifier.component';
+import { acceptDisclaimer } from 'actions/Certifier.action';
 
 const mapStateToProps = store => ({
   // Certifier is ready if connected to a valid network, and
@@ -11,8 +12,8 @@ const mapStateToProps = store => ({
   step: store.certifier.step
 });
 
-const mapDispatchToProps = () => ({
-
+const mapDispatchToProps = dispatch => ({
+  acceptDisclaimer: () => dispatch(acceptDisclaimer())
 });
 
 export default connect(

@@ -7,7 +7,7 @@ const preload = () => {
     const json = JSON.parse(atob(orelyResponse));
     return {
       certifier: {
-        step: 2,
+        step: 3,
         fetchingCost: false
       },
       tx: {
